@@ -4,6 +4,7 @@ import { Account } from './account';
 
 export interface AccountRepository
   extends BaseRepository<AccountEntity, Account> {
+  newId: () => Promise<string>;
   save: (account: Account | Account[]) => Promise<void>;
   findById: (id: string) => Promise<Account | null>;
   findByIds: (ids: string[]) => Promise<Account[]>;

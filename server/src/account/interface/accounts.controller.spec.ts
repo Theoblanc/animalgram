@@ -1,6 +1,6 @@
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { AccountController } from './accounts.controller';
-import { CreateAccountBodyDto } from './dto/crate-account.body.dto';
+import { CreateAccountBodyDTO } from './dto/crate-account.body.dto';
 
 describe('Account Controller', () => {
   let accountController: AccountController;
@@ -14,7 +14,7 @@ describe('Account Controller', () => {
 
   describe('createAccount', () => {
     it('should return void', () => {
-      const createAccountBodyDto: CreateAccountBodyDto = {
+      const createAccountBodyDTO: CreateAccountBodyDTO = {
         email: 'test@naver.com',
         password: 'password',
       };

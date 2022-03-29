@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { IsString, MaxLength, MinLength } from 'class-validator';
 
-export class CreateAccountBodyDto {
+export class CreateAccountBodyDTO {
   @IsString()
   @ApiProperty({
     example: 'test@naver.com',
@@ -9,6 +9,8 @@ export class CreateAccountBodyDto {
   readonly email: string;
 
   @IsString()
-  @ApiProperty({ example: 'password' })
+  @MinLength(8)
+  @MaxLength(20)
+  @ApiProperty({ minLength: 8, maxLength: 20, example: 'password' })
   readonly password: string;
 }

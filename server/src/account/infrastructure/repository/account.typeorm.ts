@@ -10,7 +10,15 @@ import { AccountEntity } from '../entity/account.entity';
 export class AccountTypeORM implements AccountRepository {
   constructor(
     @Inject(AccountFactory) private readonly accountFactory: AccountFactory,
+    @InjectRepository(AccountEntity)
+    private accountRepository: Repository<AccountEntity>,
   ) {}
+
+  async newId(): Promise<string> {
+    const emptyEntity = new AccountEntity();
+    const entity = await this.accountRepository.save(emptyEntity);
+    return entity.id;
+  }
 
   async save(account: Account | Account[]): Promise<void> {}
 
