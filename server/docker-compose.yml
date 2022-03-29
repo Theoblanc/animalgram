@@ -1,0 +1,34 @@
+services:
+  nest:
+    container_name: animal_gram
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+
+    ports:
+      - 4000:4000
+    command: npm run start:dev
+    networks:
+      - animal_gram_net
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: animal_gram_db
+    image: postgres
+    env_file: .env
+    networks:
+      - animal_gram_net
+    volumes:
+      - animalgramdbdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+networks:
+  animal_gram_net:
+volumes:
+  animalgramdbdata:
