@@ -15,12 +15,14 @@ export class CreaetAccountHandler
   ) {}
 
   async execute(command: CreateAccountCommand): Promise<void> {
+    const { email, password } = command;
+
     const account = this.accountFactory.create(
       await this.accountRepository.newId(),
-      command.email,
+      email,
     );
 
-    account.create(command.password);
+    account.create(password);
 
     await this.accountRepository.save(account);
 

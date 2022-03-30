@@ -3,21 +3,21 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Account } from 'src/account/domain/account';
 import { AccountFactory } from 'src/account/domain/account.factory';
 import { AccountRepository } from 'src/account/domain/account.repository';
+import { BaseTypeORM } from 'src/commons/infrastructure/repository/base.typeorm';
 import { Repository } from 'typeorm';
 import { AccountEntity } from '../entity/account.entity';
 
 @Injectable()
-export class AccountTypeORM implements AccountRepository {
+export class AccountTypeORM
+  extends BaseTypeORM<AccountEntity, Account>
+  implements AccountRepository
+{
   constructor(
     @Inject(AccountFactory) private readonly accountFactory: AccountFactory,
     @InjectRepository(AccountEntity)
     private accountRepository: Repository<AccountEntity>,
-  ) {}
-
-  async newId(): Promise<string> {
-    const emptyEntity = new AccountEntity();
-    const entity = await this.accountRepository.save(emptyEntity);
-    return entity.id;
+  ) {
+    super(accountFactory);
   }
 
   async save(account: Account | Account[]): Promise<void> {}

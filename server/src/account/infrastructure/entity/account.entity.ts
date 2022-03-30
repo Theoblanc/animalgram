@@ -8,4 +8,7 @@ export class AccountEntity extends BaseEntity {
 
   @Column({ type: 'varchar' })
   password?: string;
+
+  @Column({ type: 'varchar' })
+  name?: string;
 }

@@ -28,12 +28,12 @@ export interface Account {
 export class AccountImplement extends AggregateRoot implements Account {
   private id: string;
   private email: string;
-  private password: string;
-  private name: string;
-  private createdAt: Date;
-  private updatedAt: Date;
-  private deletedAt: Date;
-  private version: number;
+  private password?: string;
+  private name?: string;
+  private createdAt?: Date;
+  private updatedAt?: Date;
+  private deletedAt?: Date;
+  private version?: number;
 
   constructor(properties: AccountProperties) {
     super();
@@ -55,7 +55,7 @@ export class AccountImplement extends AggregateRoot implements Account {
 
   create(password: string): void {
     this.setPassword(password);
-    this.apply(Object.assign(new CreateAccountEvent(), this));
+    this.apply(new CreateAccountEvent(this.properties()));
   }
 
   setPassword(password) {
