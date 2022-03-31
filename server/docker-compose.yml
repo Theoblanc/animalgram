@@ -15,6 +15,8 @@ services:
     networks:
       - animal_gram_net
     depends_on:
+      - redis-master
+      - redis-slave
       - postgres
 
   postgres:
@@ -27,6 +29,33 @@ services:
       - animalgramdbdata:/var/lib/postgresql/data
     ports:
       - 5432:5432
+
+  redis-master:
+    hostname: redis-master
+    container_name: redis-master
+    image: bitnami/redis:latest
+    environment:
+      - REDIS_REPLICATION_MODE=master
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - 6379:6379
+    networks:
+      - animal_gram_net
+
+  redis-slave:
+    hostname: redis-slave
+    container_name: redis-slave
+    image: bitnami/redis:latest
+    environment:
+      - REDIS_REPLICATION_MODE=slave
+      - REDIS_MASTER_HOST=redis-master
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - 6480:6379
+    networks:
+      - animal_gram_net
+    depends_on:
+      - redis-master
 
 networks:
   animal_gram_net:
