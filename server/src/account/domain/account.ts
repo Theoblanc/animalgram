@@ -5,11 +5,14 @@ import { CreateAccountEvent } from '../application/event/create-account.envent';
 export type AccountEssentialProperties = Required<{
   readonly id: string;
   readonly email: string;
+  readonly emailVerified: boolean;
+  readonly balance: number;
 }>;
 
 export type AccountOptionalProperties = Partial<{
-  readonly password: string;
   readonly name: string;
+  readonly password: string;
+  readonly image: string;
   readonly createdAt: Date;
   readonly updatedAt: Date;
   readonly deletedAt: Date;
@@ -30,6 +33,9 @@ export class AccountImplement extends AggregateRoot implements Account {
   private email: string;
   private password?: string;
   private name?: string;
+  private image?: string;
+  private balance: number;
+  private emailVerified: boolean;
   private createdAt?: Date;
   private updatedAt?: Date;
   private deletedAt?: Date;
@@ -46,6 +52,9 @@ export class AccountImplement extends AggregateRoot implements Account {
       email: this.email,
       password: this.password,
       name: this.name,
+      image: this.image,
+      balance: this.balance,
+      emailVerified: this.emailVerified,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
       deletedAt: this.deletedAt,
@@ -61,7 +70,6 @@ export class AccountImplement extends AggregateRoot implements Account {
   setPassword(password) {
     const salt = bcrypt.genSaltSync();
     this.password = bcrypt.hashSync(password, salt);
-    this.updatedAt = new Date();
   }
 
   comparePassword(password: string): boolean {

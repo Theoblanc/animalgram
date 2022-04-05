@@ -57,6 +57,18 @@ services:
     depends_on:
       - redis-master
 
+  rabbitmq:
+    image: rabbitmq:alpine
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: root
+      RABBITMQ_DEFAULT_PASS: test
+    networks:
+      - animal_gram_net
+
 networks:
   animal_gram_net:
 volumes:

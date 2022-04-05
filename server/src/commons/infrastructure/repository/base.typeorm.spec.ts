@@ -1,8 +1,6 @@
 import { BaseRepository } from 'src/commons/domain/base.repository';
 import { BaseEntity } from '../entities/base.entity';
-import { BaseTypeORM, IModel } from './base.typeorm';
-
-interface BaseModel {}
+import { IModel } from './base.typeorm';
 
 describe('BaseTypeORM', () => {
   const propertiesStub: BaseEntity = {

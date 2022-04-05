@@ -13,14 +13,20 @@ export class AccountTypeORM
   implements AccountRepository
 {
   constructor(
-    @Inject(AccountFactory) private readonly accountFactory: AccountFactory,
+    @Inject(AccountFactory)
+    private readonly accountFactory: AccountFactory,
     @InjectRepository(AccountEntity)
     private accountRepository: Repository<AccountEntity>,
   ) {
     super(accountFactory);
   }
 
-  async save(account: Account | Account[]): Promise<void> {}
+  async save(account: Account | Account[]): Promise<void> {
+    const models: Account[] = Array.isArray(account) ? account : [account];
+    const entities = models.map((model) => this.modelToEntity(model));
+
+    await this.accountRepository.save(entities);
+  }
 
   async findById(id: string): Promise<Account | null> {
     return null;
@@ -32,14 +38,5 @@ export class AccountTypeORM
 
   async findByName(name: string): Promise<Account[]> {
     return [];
-  }
-
-  modelToEntity(model: Account): AccountEntity {
-    const properties = model.properties();
-    return properties;
-  }
-
-  entityToModel(entity: AccountEntity): Account {
-    return this.accountFactory.reconstitute(entity);
   }
 }

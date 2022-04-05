@@ -10,7 +10,7 @@ export class AccountFactory implements Factory<AccountProperties, Account> {
 
   create(id: string, email: string): Account {
     return this.eventPublisher.mergeObjectContext(
-      new AccountImplement({ id, email }),
+      new AccountImplement({ id, email, balance: 0, emailVerified: false }),
     );
   }
 

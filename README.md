@@ -7,7 +7,9 @@
 
 ## Description
 
-Animal Instagram is an app built using the framework of nest.js and next.js. The server is designed based on the DDD architecture.
+Animalgram is an app built using the framework of nest.js and next.js. The server is designed based on the DDD architecture and CQRS.
+
+## Architecture
 
 ## Getting started
 

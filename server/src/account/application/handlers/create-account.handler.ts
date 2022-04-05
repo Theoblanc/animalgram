@@ -1,4 +1,4 @@
-import { CreateAccountCommand } from './create-account.command';
+import { CreateAccountCommand } from '../commands/create-account.command';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { AccountRepository } from 'src/account/domain/account.repository';
 import { AccountFactory } from 'src/account/domain/account.factory';

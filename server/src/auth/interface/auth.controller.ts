@@ -1,21 +1,21 @@
 import { Body, Controller, HttpStatus, Post } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiResponse } from '@nestjs/swagger';
-import { CreateAccountCommand } from '../application/commands/create-account.command';
-import { CreateAccountBodyDTO } from './dto/crate-account.body.dto';
+import { LoginCommand } from '../domain/commands/login.command';
+import { LoginBodyDTO } from './dto/login.body.dto';
 
-@Controller('accounts')
-export class AccountController {
+@Controller('auth')
+export class AuthController {
   constructor(readonly commandBus: CommandBus, readonly queryBus: QueryBus) {}
 
-  @Post()
+  @Post('login')
   @ApiResponse({
     status: HttpStatus.CREATED,
     description: 'create account',
-    type: CreateAccountBodyDTO,
+    type: LoginBodyDTO,
   })
-  async createAccount(@Body() body: CreateAccountBodyDTO) {
-    const command = new CreateAccountCommand(body.email, body.password);
+  async login(@Body() body: LoginBodyDTO) {
+    const command = new LoginCommand(body.email, body.password);
     await this.commandBus.execute(command);
   }
 }
