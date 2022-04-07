@@ -1,6 +1,6 @@
 import { AggregateRoot } from '@nestjs/cqrs';
 import * as bcrypt from 'bcryptjs';
-import { CreateAccountEvent } from '../application/event/create-account.envent';
+import { CreateAccountEvent } from './event/create-account.event';
 
 export type AccountEssentialProperties = Required<{
   readonly id: string;

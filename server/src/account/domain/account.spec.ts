@@ -1,5 +1,5 @@
-import { CreateAccountEvent } from '../application/event/create-account.envent';
 import { AccountImplement } from './account';
+import { CreateAccountEvent } from './event/create-account.event';
 
 describe('Account', () => {
   describe('account properties', () => {
@@ -7,6 +7,8 @@ describe('Account', () => {
       const mockUser = {
         id: '1234',
         email: 'test@naver.com',
+        balance: 0,
+        emailVerified: false,
       };
 
       const account = new AccountImplement(mockUser);
@@ -23,6 +25,8 @@ describe('Account', () => {
       const account = new AccountImplement({
         id: 'id',
         email: 'test@naver.com',
+        balance: 0,
+        emailVerified: false,
       });
 
       account.create('password');

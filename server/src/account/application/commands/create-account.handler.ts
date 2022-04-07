@@ -1,11 +1,11 @@
-import { CreateAccountCommand } from '../commands/create-account.command';
+import { CreateAccountCommand } from './create-account.command';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { AccountRepository } from 'src/account/domain/account.repository';
 import { AccountFactory } from 'src/account/domain/account.factory';
 import { Inject } from '@nestjs/common';
 
 @CommandHandler(CreateAccountCommand)
-export class CreaetAccountHandler
+export class CreaetAccountCommandHandler
   implements ICommandHandler<CreateAccountCommand, void>
 {
   constructor(
@@ -17,11 +17,13 @@ export class CreaetAccountHandler
   async execute(command: CreateAccountCommand): Promise<void> {
     const { email, password } = command;
 
+    // MergeObjectContext
     const account = this.accountFactory.create(
       await this.accountRepository.newId(),
       email,
     );
 
+    // AccountImplement
     account.create(password);
 
     await this.accountRepository.save(account);
