@@ -1,9 +1,11 @@
 import { CreateAccountCommand } from './create-account.command';
-import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+import { CommandHandler, EventBus, ICommandHandler } from '@nestjs/cqrs';
 import { AccountRepository } from 'src/account/domain/account.repository';
 import { AccountFactory } from 'src/account/domain/account.factory';
-import { Inject } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { TestEvent } from '../../domain/event/test.event.hander';
 
+@Injectable()
 @CommandHandler(CreateAccountCommand)
 export class CreaetAccountCommandHandler
   implements ICommandHandler<CreateAccountCommand, void>
@@ -12,6 +14,7 @@ export class CreaetAccountCommandHandler
     @Inject('ACCOUNT_TYPEORM')
     private readonly accountRepository: AccountRepository,
     private readonly accountFactory: AccountFactory,
+    private readonly eventBus: EventBus,
   ) {}
 
   async execute(command: CreateAccountCommand): Promise<void> {
@@ -25,8 +28,10 @@ export class CreaetAccountCommandHandler
 
     // AccountImplement
     account.create(password);
-
     await this.accountRepository.save(account);
+
+    //test
+    this.eventBus.publish(new TestEvent('123'));
 
     account.commit();
   }
