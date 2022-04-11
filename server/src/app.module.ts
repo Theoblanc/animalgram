@@ -5,7 +5,9 @@ import { AccountsModule } from './account/accounts.module';
 import { AccountEntity } from './account/infrastructure/entity/account.entity';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { CommonModule } from './commons/common.module';
 import { postgresTypeORM } from './commons/infrastructure/settings/postgres.setting';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { postgresTypeORM } from './commons/infrastructure/settings/postgres.sett
       inject: [ConfigService],
     }),
     AccountsModule,
+    HealthModule,
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [AppService],
