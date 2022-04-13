@@ -25,6 +25,7 @@ export type AccountProperties = AccountEssentialProperties &
 export interface Account {
   properties: () => AccountProperties;
   create: (password: string) => void;
+  comparePassword: (password: string) => boolean;
   commit: () => void;
 }
 
@@ -74,5 +75,9 @@ export class AccountImplement extends AggregateRoot implements Account {
 
   comparePassword(password: string): boolean {
     return bcrypt.compareSync(password, this.password);
+  }
+
+  update(account: Partial<AccountProperties>): void {
+    Object.assign(this, account);
   }
 }

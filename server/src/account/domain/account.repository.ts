@@ -8,4 +8,5 @@ export interface AccountRepository
   findById: (id: string) => Promise<Account | null>;
   findByIds: (ids: string[]) => Promise<Account[]>;
   findByName: (name: string) => Promise<Account[]>;
+  findOneBy: (where) => Promise<Account>;
 }

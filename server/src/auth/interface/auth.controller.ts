@@ -1,7 +1,7 @@
 import { Body, Controller, HttpStatus, Post } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiResponse } from '@nestjs/swagger';
-import { LoginCommand } from '../domain/commands/login.command';
+import { SignInCommand } from '../application/commands/signIn.command';
 import { LoginBodyDTO } from './dto/login.body.dto';
 
 @Controller('auth')
@@ -15,7 +15,7 @@ export class AuthController {
     type: LoginBodyDTO,
   })
   async login(@Body() body: LoginBodyDTO) {
-    const command = new LoginCommand(body.email, body.password);
+    const command = new SignInCommand(body.email, body.password);
     await this.commandBus.execute(command);
   }
 }

@@ -58,7 +58,7 @@ services:
       - redis-master
 
   rabbitmq:
-    image: rabbitmq:alpine
+    image: rabbitmq:3-management-alpine
     restart: always
     ports:
       - 5672:5672

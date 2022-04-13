@@ -6,7 +6,6 @@ import { AccountRepository } from 'src/account/domain/account.repository';
 import { BaseTypeORM } from 'src/commons/infrastructure/repository/base.typeorm';
 import { Repository } from 'typeorm';
 import { AccountEntity } from '../entity/account.entity';
-
 @Injectable()
 export class AccountTypeORM
   extends BaseTypeORM<AccountEntity, Account>
@@ -20,6 +19,7 @@ export class AccountTypeORM
   ) {
     super(accountFactory);
   }
+  findOneBy: (where: any) => Promise<Account>;
 
   async save(account: Account | Account[]): Promise<void> {
     const models: Account[] = Array.isArray(account) ? account : [account];
@@ -34,6 +34,11 @@ export class AccountTypeORM
 
   async findByIds(ids: string[]): Promise<Account[]> {
     return [];
+  }
+
+  async findOne(where): Promise<Account> {
+    const entity = await this.accountRepository.findOne(where);
+    return entity ? this.entityToModel(entity) : null;
   }
 
   async findByName(name: string): Promise<Account[]> {
