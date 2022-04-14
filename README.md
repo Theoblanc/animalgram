@@ -31,9 +31,17 @@ web
 
 ## TODO
 
+### USER
+
 - [ ] Auth
 - [ ] Sign Up
-- [ ] Sign In
+- [ ] Email Login
+- [ ] Social Login
 - [ ] Withdrawal Account
-- [ ] Create Post
-- [ ] Get Post List
+
+### POST
+
+- [ ] Upload Post
+- [ ] Image Uploads
+- [ ] Favourites
+- [ ] Reviews
