@@ -1,8 +1,8 @@
 import { Module, Provider } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CreaetAccountCommandHandler } from './application/commands/create-account.handler';
-import { CreateAccountEventHandler } from './application/event/create-account.event.hander';
+import { CreaetAccountCommandHandler } from './application/commands/handler/create-account.handler';
+import { CreateAccountEventHandler } from './application/event/create-account.event.handler';
 import { AccountFactory } from './domain/account.factory';
 import { AccountEntity } from './infrastructure/entity/account.entity';
 import { AccountTypeORM } from './infrastructure/repository/account.typeorm';

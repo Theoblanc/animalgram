@@ -1,9 +1,9 @@
-import { CreateAccountCommand } from './create-account.command';
+import { CreateAccountCommand } from '../impl/create-account.command';
 import { CommandHandler, EventBus, ICommandHandler } from '@nestjs/cqrs';
 import { AccountRepository } from 'src/account/domain/account.repository';
 import { AccountFactory } from 'src/account/domain/account.factory';
 import { Inject, Injectable } from '@nestjs/common';
-import { TestEvent } from '../../domain/event/test.event.hander';
+import { TestEvent } from '../../../domain/event/test.event.hander';
 
 @Injectable()
 @CommandHandler(CreateAccountCommand)

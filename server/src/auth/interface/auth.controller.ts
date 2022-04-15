@@ -1,7 +1,7 @@
 import { Body, Controller, HttpStatus, Post } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiResponse } from '@nestjs/swagger';
-import { SignInCommand } from '../application/commands/signIn.command';
+import { SignInCommand } from '../application/commands/impl/signIn.command';
 import { LoginBodyDTO } from './dto/login.body.dto';
 
 @Controller('auth')

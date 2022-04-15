@@ -3,7 +3,7 @@ import { CommandHandler, EventBus, ICommandHandler } from '@nestjs/cqrs';
 import { AccountFactory } from 'src/account/domain/account.factory';
 import { AccountRepository } from 'src/account/domain/account.repository';
 import { AuthFactory } from 'src/auth/domain/auth.factory';
-import { SignInCommand } from './signIn.command';
+import { SignInCommand } from '../impl/signIn.command';
 
 @CommandHandler(SignInCommand)
 export class LoginCommandHandler
@@ -19,9 +19,7 @@ export class LoginCommandHandler
   async execute(command: SignInCommand): Promise<void> {
     const { email, password } = command;
 
-    const findedAccount = await this.accountRepository.findOneBy({ email });
-
-    // const auth = this.authFactory.create();
+    const findedAccount = await this.accountRepository.findOne({ email });
 
     const account = this.accountFactory.reconstitute(
       findedAccount.properties(),

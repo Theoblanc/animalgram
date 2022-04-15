@@ -1,7 +1,7 @@
 import { Body, Controller, HttpStatus, Post } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiResponse } from '@nestjs/swagger';
-import { CreateAccountCommand } from '../application/commands/create-account.command';
+import { CreateAccountCommand } from '../application/commands/impl/create-account.command';
 import { CreateAccountBodyDTO } from './dto/crate-account.body.dto';
 
 @Controller('accounts')

@@ -19,7 +19,6 @@ export class AccountTypeORM
   ) {
     super(accountFactory);
   }
-  findOneBy: (where: any) => Promise<Account>;
 
   async save(account: Account | Account[]): Promise<void> {
     const models: Account[] = Array.isArray(account) ? account : [account];

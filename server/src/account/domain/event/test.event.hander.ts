@@ -8,7 +8,6 @@ export class TestEvent extends CqrsEvent implements IEvent {
   id: string;
   constructor(id) {
     super(TestEvent.name);
-
     this.id = id;
   }
 }

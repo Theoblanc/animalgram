@@ -1,7 +1,7 @@
 import Redis from 'ioredis';
 import { AppService } from 'src/app.service';
 
-export class RedisStore {
+export class EventStoreImplement {
   private readonly master: Redis.Redis;
   private readonly slave: Redis.Redis;
 
