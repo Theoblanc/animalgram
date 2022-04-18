@@ -1,20 +1,37 @@
 import Redis from 'ioredis';
-import { AppService } from 'src/app.service';
 
-export class EventStoreImplement {
+import { AppService } from 'src/app.service';
+import {
+  Event,
+  EventIdentity,
+  EventStore,
+} from 'src/commons/domain/event-store.interface';
+
+export class EventStoreImplement implements EventStore {
   private readonly master: Redis.Redis;
-  private readonly slave: Redis.Redis;
 
   constructor() {
-    const { master, slave } = AppService.redisClusterConfig();
+    const { master } = AppService.redisClusterConfig();
     this.master = new Redis(master.port, master.host).on(
       'error',
       this.failToConnectRedis,
     );
-    this.slave = new Redis(slave.port, slave.host).on(
-      'error',
-      this.failToConnectRedis,
-    );
+  }
+  async save<Properties extends EventIdentity>(
+    event: Event<Properties>,
+  ): Promise<void> {
+    await this.master.set(event.data.id, JSON.stringify(event.data));
+  }
+
+  async set(key: string, value: string): Promise<void> {
+    await this.master.set(key, value, 'EX', 1);
+  }
+
+  async get(key: string): Promise<string | null> {
+    return this.master
+      .get(key)
+      .then((result) => result)
+      .catch(() => null);
   }
 
   private failToConnectRedis(error: Error): Promise<void> {

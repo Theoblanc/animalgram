@@ -14,7 +14,6 @@ class RedisConfig {
 
 class RedisClusterConfig {
   readonly master: RedisConfig;
-  readonly slave: RedisConfig;
 }
 
 @Injectable()
@@ -41,13 +40,6 @@ export class AppService {
       : 6379;
     const master: RedisConfig = { host: masterHost, port: masterPort };
 
-    const { REDIS_SLAVE_HOST, REDIS_SLAVE_PORT } = process.env;
-    const slaveHost = REDIS_SLAVE_HOST ? REDIS_SLAVE_HOST : 'localhost';
-    const slavePort = Number(process.env.REDIS_SLAVE_PORT)
-      ? Number(REDIS_SLAVE_PORT)
-      : 6379;
-    const slave: RedisConfig = { host: slaveHost, port: slavePort };
-
-    return { master, slave };
+    return { master };
   }
 }

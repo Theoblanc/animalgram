@@ -16,7 +16,6 @@ services:
       - animal_gram_net
     depends_on:
       - redis-master
-      - redis-slave
       - postgres
 
   postgres:
@@ -41,21 +40,6 @@ services:
       - 6379:6379
     networks:
       - animal_gram_net
-
-  redis-slave:
-    hostname: redis-slave
-    container_name: redis-slave
-    image: bitnami/redis:latest
-    environment:
-      - REDIS_REPLICATION_MODE=slave
-      - REDIS_MASTER_HOST=redis-master
-      - ALLOW_EMPTY_PASSWORD=yes
-    ports:
-      - 6480:6379
-    networks:
-      - animal_gram_net
-    depends_on:
-      - redis-master
 
   rabbitmq:
     image: rabbitmq:3-management-alpine

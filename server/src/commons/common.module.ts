@@ -4,12 +4,12 @@ import { IntegrationEventPublisherImplement } from './infrastructure/messgae/int
 
 const infrastructure: Provider[] = [
   {
-    provide: 'INTEGRATION_EVENT_PUBLISHER',
-    useClass: IntegrationEventPublisherImplement,
-  },
-  {
     provide: 'EVENT_STORE',
     useClass: EventStoreImplement,
+  },
+  {
+    provide: 'INTEGRATION_EVENT_PUBLISHER',
+    useClass: IntegrationEventPublisherImplement,
   },
 ];
 @Module({

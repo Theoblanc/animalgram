@@ -1,6 +1,7 @@
 import { Module, Provider } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CommonModule } from 'src/commons/common.module';
 import { CreaetAccountCommandHandler } from './application/commands/handler/create-account.handler';
 import { CreateAccountEventHandler } from './application/event/create-account.event.handler';
 import { AccountFactory } from './domain/account.factory';
@@ -20,7 +21,11 @@ const domain = [AccountFactory];
 const application = [CreaetAccountCommandHandler, CreateAccountEventHandler];
 
 @Module({
-  imports: [CqrsModule, TypeOrmModule.forFeature([AccountEntity])],
+  imports: [
+    CqrsModule,
+    CommonModule,
+    TypeOrmModule.forFeature([AccountEntity]),
+  ],
   controllers: [AccountController],
   providers: [...infrastructure, ...domain, ...application],
 })
