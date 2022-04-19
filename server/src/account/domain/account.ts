@@ -1,5 +1,6 @@
 import { AggregateRoot } from '@nestjs/cqrs';
 import * as bcrypt from 'bcryptjs';
+
 import { CreateAccountEvent } from './event/create-account.event';
 
 export type AccountEssentialProperties = Required<{
@@ -13,6 +14,7 @@ export type AccountOptionalProperties = Partial<{
   readonly name: string;
   readonly password: string;
   readonly image: string;
+  readonly token: string;
   readonly createdAt: Date;
   readonly updatedAt: Date;
   readonly deletedAt: Date;
@@ -37,6 +39,7 @@ export class AccountImplement extends AggregateRoot implements Account {
   private image?: string;
   private balance: number;
   private emailVerified: boolean;
+  private token: string;
   private createdAt?: Date;
   private updatedAt?: Date;
   private deletedAt?: Date;
@@ -56,6 +59,7 @@ export class AccountImplement extends AggregateRoot implements Account {
       image: this.image,
       balance: this.balance,
       emailVerified: this.emailVerified,
+      token: this.token,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
       deletedAt: this.deletedAt,

@@ -1,6 +1,7 @@
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { AccountEntity } from 'src/account/infrastructure/entity/account.entity';
+import { TokenEntity } from 'src/token/infrastructure/entity/token.entity';
 
 export async function postgresTypeORM(
   config: ConfigService,
@@ -14,6 +15,6 @@ export async function postgresTypeORM(
     password: config.get('POSTGRES_PASSWORD'),
     synchronize: config.get('POSTGRES_SYNC') === 'true',
     logging: config.get('POSTGRES_LOGGING') === 'true',
-    entities: [AccountEntity],
+    entities: [AccountEntity, TokenEntity],
   };
 }

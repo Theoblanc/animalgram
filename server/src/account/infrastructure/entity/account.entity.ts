@@ -1,5 +1,6 @@
 import { BaseEntity } from 'src/commons/infrastructure/entities/base.entity';
-import { Column, Entity } from 'typeorm';
+import { TokenEntity } from 'src/token/infrastructure/entity/token.entity';
+import { Column, Entity, OneToOne, JoinColumn } from 'typeorm';
 
 @Entity({
   name: 'accounts',
@@ -23,6 +24,7 @@ export class AccountEntity extends BaseEntity {
   @Column({ type: 'boolean', default: false })
   emailVerified: boolean;
 
-  @Column({ type: 'varchar', nullable: true })
+  @OneToOne(() => TokenEntity, (token) => token.account)
+  @JoinColumn()
   token?: string;
 }
