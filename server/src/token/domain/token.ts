@@ -1,5 +1,5 @@
 import { AggregateRoot } from '@nestjs/cqrs';
-import { AccountEntity } from 'src/account/infrastructure/entity/account.entity';
+import { AccountProperties } from 'src/account/domain/account';
 import { TokenTypeEnum } from 'src/commons/domain/enum/token-type.enum';
 
 export type TokenEssentialProperties = Required<{
@@ -7,10 +7,9 @@ export type TokenEssentialProperties = Required<{
 }>;
 
 export type TokenOptionalProperties = Partial<{
-  token: string;
-  type: TokenTypeEnum;
-  account: AccountEntity;
-  expiresIn: Date;
+  readonly token: string;
+  readonly type: TokenTypeEnum;
+  readonly account: AccountProperties;
 }>;
 
 export type TokenProperties = TokenEssentialProperties &
@@ -25,7 +24,7 @@ export class TokenImplement extends AggregateRoot implements Token {
   private id: string;
   private token: string;
   private type: TokenTypeEnum;
-  private account: AccountEntity;
+  private account: AccountProperties;
   private expiresIn: Date;
 
   constructor(properties: TokenProperties) {
@@ -38,7 +37,6 @@ export class TokenImplement extends AggregateRoot implements Token {
       token: this.token,
       type: this.type,
       account: this.account,
-      expiresIn: this.expiresIn,
     };
   }
 }

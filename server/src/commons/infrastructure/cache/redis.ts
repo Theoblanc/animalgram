@@ -1,5 +1,4 @@
 import Redis from 'ioredis';
-
 import { AppService } from 'src/app.service';
 import {
   Event,
@@ -14,7 +13,7 @@ export class EventStoreImplement implements EventStore {
     const { master } = AppService.redisClusterConfig();
     this.master = new Redis(master.port, master.host).on(
       'error',
-      this.failToConnectRedis,
+      (error: Error) => this.failToConnectRedis(error),
     );
   }
   async save<Properties extends EventIdentity>(
@@ -30,11 +29,11 @@ export class EventStoreImplement implements EventStore {
   async get(key: string): Promise<string | null> {
     return this.master
       .get(key)
-      .then((result) => result)
+      .then((result: string) => result)
       .catch(() => null);
   }
 
-  private failToConnectRedis(error: Error): Promise<void> {
+  private failToConnectRedis(error: Error): void {
     console.error(error);
     process.exit(1);
   }

@@ -21,7 +21,7 @@ export class IntegrationEventPublisherImplement
   }
 
   async publish(message: IntegrationEvent): Promise<void> {
-    this.promisedChannel.then((channel) =>
+    await this.promisedChannel.then((channel) =>
       channel.publish(
         IntegrationEventPublisherImplement.exchange,
         message.subject,
@@ -31,8 +31,12 @@ export class IntegrationEventPublisherImplement
   }
   private static async connect(config: RabbitMQConfig): Promise<Channel> {
     return connect(config)
-      .then(IntegrationEventPublisherImplement.createChannel)
-      .then(IntegrationEventPublisherImplement.assertExchange)
+      .then((connection: Connection) =>
+        IntegrationEventPublisherImplement.createChannel(connection),
+      )
+      .then((channel: Channel) =>
+        IntegrationEventPublisherImplement.assertExchange(channel),
+      )
       .catch(() => IntegrationEventPublisherImplement.connect(config));
   }
 

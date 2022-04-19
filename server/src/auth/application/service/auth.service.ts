@@ -12,7 +12,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  generateToken(userId, username) {
+  generateToken(userId: string, username: string) {
     const payload = { username, id: userId, iat: Date.now() };
     return this.jwtService.sign(payload);
   }

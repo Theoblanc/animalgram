@@ -1,6 +1,5 @@
 import { AggregateRoot } from '@nestjs/cqrs';
 import * as bcrypt from 'bcryptjs';
-
 import { CreateAccountEvent } from './event/create-account.event';
 
 export type AccountEssentialProperties = Required<{
@@ -27,6 +26,7 @@ export type AccountProperties = AccountEssentialProperties &
 export interface Account {
   properties: () => AccountProperties;
   create: (password: string) => void;
+  update: (account: Partial<AccountProperties>) => void;
   comparePassword: (password: string) => boolean;
   commit: () => void;
 }
@@ -72,7 +72,7 @@ export class AccountImplement extends AggregateRoot implements Account {
     this.apply(new CreateAccountEvent(this.properties()));
   }
 
-  setPassword(password) {
+  setPassword(password: string) {
     const salt = bcrypt.genSaltSync();
     this.password = bcrypt.hashSync(password, salt);
   }

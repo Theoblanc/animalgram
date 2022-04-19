@@ -3,9 +3,7 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { AccountEntity } from 'src/account/infrastructure/entity/account.entity';
 import { TokenEntity } from 'src/token/infrastructure/entity/token.entity';
 
-export async function postgresTypeORM(
-  config: ConfigService,
-): Promise<TypeOrmModuleOptions> {
+export function postgresTypeORM(config: ConfigService): TypeOrmModuleOptions {
   return {
     type: 'postgres',
     host: config.get('POSTGRES_HOST'),

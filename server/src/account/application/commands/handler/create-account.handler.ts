@@ -22,7 +22,7 @@ export class CreaetAccountCommandHandler
 
     // MergeObjectContext
     const account = this.accountFactory.create(
-      await this.accountRepository.newId(),
+      this.accountRepository.newId(),
       email,
     );
 

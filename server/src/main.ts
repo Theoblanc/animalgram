@@ -10,4 +10,5 @@ async function bootstrap() {
   setupSwagger(app);
   await app.listen(AppService.port());
 }
-bootstrap();
+
+void bootstrap();

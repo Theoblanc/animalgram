@@ -19,7 +19,4 @@ export class TokenEntity extends BaseEntity {
 
   @OneToOne(() => AccountEntity, (account) => account.token)
   account?: AccountEntity;
-
-  @Column({ type: 'date', nullable: true })
-  expiresIn?: Date;
 }

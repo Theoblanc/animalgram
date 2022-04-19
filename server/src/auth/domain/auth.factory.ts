@@ -8,7 +8,7 @@ export class AuthFactory implements Factory<AuthProperties, Auth> {
     @Inject(EventPublisher) private readonly eventPublisher: EventPublisher,
   ) {}
 
-  create(accessToken, refreshToken) {
+  create(accessToken: string, refreshToken: string) {
     return this.eventPublisher.mergeObjectContext(
       new AuthImplement({
         accessToken,

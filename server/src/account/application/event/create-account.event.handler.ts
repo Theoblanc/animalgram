@@ -19,14 +19,14 @@ export class CreateAccountEventHandler
   async handle(event: CreateAccountEvent | TestEvent) {
     console.log('CreateAccountEvent...');
 
-    this.publisher.publish({
+    await this.publisher.publish({
       subject: 'account.create',
       data: {
         id: event.id,
       },
     });
 
-    this.eventStore.save({
+    await this.eventStore.save({
       subject: 'account.create',
       data: event,
     });

@@ -5,9 +5,7 @@ export abstract class CqrsEvent {
 }
 
 export class TestEvent extends CqrsEvent implements IEvent {
-  id: string;
-  constructor(id) {
+  constructor(readonly id: string) {
     super(TestEvent.name);
-    this.id = id;
   }
 }

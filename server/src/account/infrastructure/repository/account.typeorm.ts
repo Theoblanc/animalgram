@@ -28,19 +28,20 @@ export class AccountTypeORM
   }
 
   async findById(id: string): Promise<Account | null> {
-    return null;
-  }
-
-  async findByIds(ids: string[]): Promise<Account[]> {
-    return [];
-  }
-
-  async findOne(where): Promise<Account> {
-    const entity = await this.accountRepository.findOne(where);
+    const entity = await this.accountRepository.findOne(id);
     return entity ? this.entityToModel(entity) : null;
   }
 
-  async findByName(name: string): Promise<Account[]> {
+  async findOneByEmail(email: string): Promise<Account> {
+    const entity = await this.accountRepository.findOne({ email });
+    return entity ? this.entityToModel(entity) : null;
+  }
+
+  findByIds(ids: string[]): Account[] {
+    return [];
+  }
+
+  findByName(name: string): Account[] {
     return [];
   }
 }

@@ -6,7 +6,6 @@ export interface AccountRepository
   extends BaseRepository<AccountEntity, Account> {
   save: (account: Account | Account[]) => Promise<void>;
   findById: (id: string) => Promise<Account | null>;
-  findByIds: (ids: string[]) => Promise<Account[]>;
-  findByName: (name: string) => Promise<Account[]>;
-  findOne: (where) => Promise<Account>;
+  findByIds: (ids: string[]) => Account[];
+  findOneByEmail: (email: string) => Promise<Account>;
 }
