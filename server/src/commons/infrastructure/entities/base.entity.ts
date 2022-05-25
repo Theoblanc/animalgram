@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   VersionColumn,
   Entity,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
@@ -14,7 +15,7 @@ export abstract class BaseEntity {
   @CreateDateColumn()
   createdAt?: Date;
 
-  @CreateDateColumn()
+  @UpdateDateColumn()
   updatedAt?: Date;
 
   @DeleteDateColumn()

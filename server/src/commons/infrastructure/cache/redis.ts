@@ -27,10 +27,7 @@ export class EventStoreImplement implements EventStore {
   }
 
   async get(key: string): Promise<string | null> {
-    return this.master
-      .get(key)
-      .then((result: string) => result)
-      .catch(() => null);
+    return this.master.get(key).then((result: string) => result);
   }
 
   private failToConnectRedis(error: Error): void {

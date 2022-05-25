@@ -2,7 +2,7 @@ import { Body, Controller, HttpStatus, Post } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiResponse } from '@nestjs/swagger';
 import { SignInCommand } from '../application/commands/impl/signIn.command';
-import { LoginBodyDTO } from './dto/login.body.dto';
+import { SignInBodyDTO } from './dto/login.body.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -11,10 +11,10 @@ export class AuthController {
   @Post('login')
   @ApiResponse({
     status: HttpStatus.CREATED,
-    description: 'create account',
-    type: LoginBodyDTO,
+    description: 'login user',
+    type: SignInBodyDTO,
   })
-  async login(@Body() body: LoginBodyDTO) {
+  async login(@Body() body: SignInBodyDTO) {
     const command = new SignInCommand(body.email, body.password);
     await this.commandBus.execute(command);
   }

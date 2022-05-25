@@ -10,7 +10,12 @@ export class AccountFactory implements Factory<AccountProperties, Account> {
 
   create(id: string, email: string): Account {
     return this.eventPublisher.mergeObjectContext(
-      new AccountImplement({ id, email, balance: 0, emailVerified: false }),
+      new AccountImplement({
+        id,
+        email,
+        balance: 0,
+        emailVerified: false,
+      }),
     );
   }
 
@@ -20,3 +25,5 @@ export class AccountFactory implements Factory<AccountProperties, Account> {
     );
   }
 }
+
+//펙토리 패턴

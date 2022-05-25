@@ -25,7 +25,6 @@ export class TokenImplement extends AggregateRoot implements Token {
   private token: string;
   private type: TokenTypeEnum;
   private account: AccountProperties;
-  private expiresIn: Date;
 
   constructor(properties: TokenProperties) {
     super();
@@ -38,5 +37,9 @@ export class TokenImplement extends AggregateRoot implements Token {
       type: this.type,
       account: this.account,
     };
+  }
+
+  update(token: Partial<TokenProperties>): void {
+    Object.assign(this, token);
   }
 }
