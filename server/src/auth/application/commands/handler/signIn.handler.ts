@@ -2,7 +2,6 @@ import { Inject } from '@nestjs/common';
 import { CommandHandler, EventBus, ICommandHandler } from '@nestjs/cqrs';
 import { AccountFactory } from 'src/account/domain/account.factory';
 import { AccountRepository } from 'src/account/domain/account.repository';
-import { AuthFactory } from 'src/auth/domain/auth.factory';
 import { TokenTypeEnum } from 'src/commons/domain/enum/token-type.enum';
 import { TokenFactory } from 'src/token/domain/token.factory';
 import { TokenRepository } from 'src/token/domain/token.repository';
