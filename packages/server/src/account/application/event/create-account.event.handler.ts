@@ -11,9 +11,6 @@ export class CreateAccountEventHandler
   constructor(
     @Inject('INTEGRATION_EVENT_PUBLISHER')
     readonly publisher: IntegrationEventPublisher,
-
-    @Inject('EVENT_STORE')
-    readonly eventStore: EventStoreImplement,
   ) {}
   async handle(event: CreateAccountEvent | TestEvent) {
     console.log('CreateAccountEvent...');
@@ -25,9 +22,9 @@ export class CreateAccountEventHandler
       },
     });
 
-    await this.eventStore.save({
-      subject: 'account.create',
-      data: event,
-    });
+    // await this.eventStore.save({
+    //   subject: 'account.create',
+    //   data: event,
+    // });
   }
 }

@@ -32,6 +32,7 @@ services:
   redis-master:
     hostname: redis-master
     container_name: redis-master
+    env_file: .env
     image: bitnami/redis:latest
     environment:
       - REDIS_REPLICATION_MODE=master

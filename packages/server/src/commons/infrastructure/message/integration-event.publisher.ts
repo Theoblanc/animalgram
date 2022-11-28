@@ -2,15 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { AppService, RabbitMQConfig } from 'src/app.service';
 import { Channel, connect, Connection } from 'amqplib';
 
-import {
-  IntegrationEvent,
-  IntegrationEventPublisher,
-} from 'src/commons/domain/integration.interface';
+import { IntegrationEvent, IntegrationEventPublisher } from 'src/commons/domain/integration.interface';
 
 @Injectable()
-export class IntegrationEventPublisherImplement
-  implements IntegrationEventPublisher
-{
+export class IntegrationEventPublisherImplement implements IntegrationEventPublisher {
   private static exchange: string;
   private readonly promisedChannel: Promise<Channel>;
 
@@ -25,18 +20,14 @@ export class IntegrationEventPublisherImplement
       channel.publish(
         IntegrationEventPublisherImplement.exchange,
         message.subject,
-        Buffer.from(JSON.stringify(message.data)),
-      ),
+        Buffer.from(JSON.stringify(message.data))
+      )
     );
   }
   private static async connect(config: RabbitMQConfig): Promise<Channel> {
     return connect(config)
-      .then((connection: Connection) =>
-        IntegrationEventPublisherImplement.createChannel(connection),
-      )
-      .then((channel: Channel) =>
-        IntegrationEventPublisherImplement.assertExchange(channel),
-      )
+      .then((connection: Connection) => IntegrationEventPublisherImplement.createChannel(connection))
+      .then((channel: Channel) => IntegrationEventPublisherImplement.assertExchange(channel))
       .catch(() => IntegrationEventPublisherImplement.connect(config));
   }
 
@@ -45,13 +36,9 @@ export class IntegrationEventPublisherImplement
   }
 
   private static async assertExchange(channel: Channel): Promise<Channel> {
-    await channel.assertExchange(
-      IntegrationEventPublisherImplement.exchange,
-      'topic',
-      {
-        durable: true,
-      },
-    );
+    await channel.assertExchange(IntegrationEventPublisherImplement.exchange, 'topic', {
+      durable: true
+    });
     return channel;
   }
 }

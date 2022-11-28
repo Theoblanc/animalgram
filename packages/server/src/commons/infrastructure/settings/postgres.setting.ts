@@ -13,6 +13,6 @@ export function postgresTypeORM(config: ConfigService): TypeOrmModuleOptions {
     password: config.get('POSTGRES_PASSWORD'),
     synchronize: config.get('POSTGRES_SYNC') === 'true',
     logging: config.get('POSTGRES_LOGGING') === 'true',
-    entities: [AccountEntity, TokenEntity],
+    entities: [AccountEntity, TokenEntity]
   };
 }

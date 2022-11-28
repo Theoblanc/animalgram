@@ -1,14 +1,13 @@
-import { RedisModuleOptions } from "@nestjs-modules/ioredis";
-import { ConfigService } from "@nestjs/config";
-
-type RedisConfig = {
-
-}
+import { RedisModuleOptions } from '@liaoliaots/nestjs-redis';
+import { ConfigService } from '@nestjs/config';
 
 export async function redisFactory(config: ConfigService): Promise<RedisModuleOptions> {
   return {
-    config: {
-      url: config.get("REDIS_URL")
-    }
+    config: [
+      {
+        host: config.get('REDIS_MASTER_HOST'),
+        port: config.get('REDIS_MASTER_PORT')
+      }
+    ]
   };
 }

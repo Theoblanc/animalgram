@@ -1,4 +1,4 @@
-import { CacheModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AccountsModule } from './account/accounts.module';
@@ -7,8 +7,8 @@ import { AppService } from './app.service';
 import { CommonModule } from './commons/common.module';
 import { postgresTypeORM } from './commons/infrastructure/settings/postgres.setting';
 import { HealthModule } from './health/health.module';
-import { RedisModule } from '@nestjs-modules/ioredis';
 import { redisFactory } from './commons/infrastructure/cache/redis';
+import { RedisModule } from '@liaoliaots/nestjs-redis';
 
 const modules = [AccountsModule, HealthModule, CommonModule];
 
@@ -16,18 +16,19 @@ const modules = [AccountsModule, HealthModule, CommonModule];
   imports: [
     ConfigModule.forRoot({
       envFilePath: ['.env'],
-      isGlobal: true,
+      isGlobal: true
     }),
     TypeOrmModule.forRootAsync({
       useFactory: postgresTypeORM,
-      inject: [ConfigService],
+      inject: [ConfigService]
     }),
     RedisModule.forRootAsync({
       useFactory: redisFactory,
+      inject: [ConfigService]
     }),
-    ...modules,
+    ...modules
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService]
 })
 export class AppModule {}

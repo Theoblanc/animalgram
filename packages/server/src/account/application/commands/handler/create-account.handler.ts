@@ -29,7 +29,7 @@ export class CreaetAccountCommandHandler
     // AccountImplement
     account.create(password);
     await this.accountRepository.save(account);
-    
+
     //test
     this.eventBus.publish(new TestEvent('123'));
 
