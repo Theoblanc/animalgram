@@ -3,7 +3,7 @@ import { TokenEntity } from 'src/token/infrastructure/entity/token.entity';
 import { Column, Entity, OneToOne, JoinColumn } from 'typeorm';
 
 @Entity({
-  name: 'accounts',
+  name: 'accounts'
 })
 export class AccountEntity extends BaseEntity {
   @Column({ type: 'varchar' })
@@ -23,8 +23,4 @@ export class AccountEntity extends BaseEntity {
 
   @Column({ type: 'boolean', default: false })
   emailVerified: boolean;
-
-  @OneToOne(() => TokenEntity, (token) => token.account)
-  @JoinColumn()
-  token?: string;
 }

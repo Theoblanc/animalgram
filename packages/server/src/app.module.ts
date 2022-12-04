@@ -9,6 +9,9 @@ import { postgresTypeORM } from './commons/infrastructure/settings/postgres.sett
 import { HealthModule } from './health/health.module';
 import { redisFactory } from './commons/infrastructure/cache/redis';
 import { RedisModule } from '@liaoliaots/nestjs-redis';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { GqlConfigService } from './commons/infrastructure/settings/graphql.setting';
 
 const modules = [AccountsModule, HealthModule, CommonModule];
 
@@ -25,6 +28,10 @@ const modules = [AccountsModule, HealthModule, CommonModule];
     RedisModule.forRootAsync({
       useFactory: redisFactory,
       inject: [ConfigService]
+    }),
+    GraphQLModule.forRootAsync<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      useClass: GqlConfigService
     }),
     ...modules
   ],

@@ -7,24 +7,19 @@ import { TestEvent } from '../../../domain/event/test.event.hander';
 
 @Injectable()
 @CommandHandler(CreateAccountCommand)
-export class CreaetAccountCommandHandler
-  implements ICommandHandler<CreateAccountCommand, void>
-{
+export class CreaetAccountCommandHandler implements ICommandHandler<CreateAccountCommand, void> {
   constructor(
     @Inject('ACCOUNT_TYPEORM')
     private readonly accountRepository: AccountRepository,
     private readonly accountFactory: AccountFactory,
-    private readonly eventBus: EventBus,
+    private readonly eventBus: EventBus
   ) {}
 
   async execute(command: CreateAccountCommand): Promise<void> {
     const { email, password } = command;
 
     // MergeObjectContext
-    const account = this.accountFactory.create(
-      this.accountRepository.newId(),
-      email,
-    );
+    const account = this.accountFactory.create(this.accountRepository.newId(), email);
 
     // AccountImplement
     account.create(password);

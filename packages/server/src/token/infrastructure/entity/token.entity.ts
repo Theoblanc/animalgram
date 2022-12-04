@@ -4,7 +4,7 @@ import { BaseEntity } from 'src/commons/infrastructure/entities/base.entity';
 import { Column, Entity, OneToOne } from 'typeorm';
 
 @Entity({
-  name: 'tokens',
+  name: 'tokens'
 })
 export class TokenEntity extends BaseEntity {
   @Column({ type: 'varchar', nullable: true })
@@ -13,10 +13,7 @@ export class TokenEntity extends BaseEntity {
   @Column({
     type: 'enum',
     enum: TokenTypeEnum,
-    nullable: true,
+    nullable: true
   })
   type?: TokenTypeEnum;
-
-  @OneToOne(() => AccountEntity, (account) => account.token)
-  account?: AccountEntity;
 }

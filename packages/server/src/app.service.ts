@@ -7,15 +7,6 @@ export class RabbitMQConfig {
   readonly password: string;
 }
 
-class RedisConfig {
-  readonly host: string;
-  readonly port: number;
-}
-
-class RedisClusterConfig {
-  readonly master: RedisConfig;
-}
-
 @Injectable()
 export class AppService {
   static port(): number {
@@ -28,9 +19,7 @@ export class AppService {
       exchange: process.env.RABBIT_MQ_EXCHANGE || 'example-exchange',
       hostname: process.env.RABBIT_MQ_HOSTNAME || 'localhost',
       username: process.env.RABBIT_MQ_USER_NAME || 'root',
-      password: process.env.RABBIT_MQ_PASSWORD || 'test',
+      password: process.env.RABBIT_MQ_PASSWORD || 'test'
     };
   }
-
-
 }

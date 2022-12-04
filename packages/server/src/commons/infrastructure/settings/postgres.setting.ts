@@ -4,6 +4,7 @@ import { AccountEntity } from 'src/account/infrastructure/entity/account.entity'
 import { TokenEntity } from 'src/token/infrastructure/entity/token.entity';
 
 export function postgresTypeORM(config: ConfigService): TypeOrmModuleOptions {
+  console.log('config', config);
   return {
     type: 'postgres',
     host: config.get('POSTGRES_HOST'),

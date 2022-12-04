@@ -20,8 +20,7 @@ export type AccountOptionalProperties = Partial<{
   readonly version: number;
 }>;
 
-export type AccountProperties = AccountEssentialProperties &
-  AccountOptionalProperties;
+export type AccountProperties = AccountEssentialProperties & AccountOptionalProperties;
 
 export interface Account {
   properties: () => AccountProperties;
@@ -63,7 +62,7 @@ export class AccountImplement extends AggregateRoot implements Account {
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
       deletedAt: this.deletedAt,
-      version: this.version,
+      version: this.version
     };
   }
 
