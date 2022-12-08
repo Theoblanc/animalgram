@@ -11,6 +11,14 @@ Animalgram is an app built using the framework of nest.js and next.js. The serve
 
 ## Architecture
 
+This repository presents examples of applications using domain-driven design and CQRS using nest, a nodejs framework using typescript.
+
+The domain-driven design consists of four layers, each consisting of interface, application, domain, and infrastructure.
+
+### Domain Layer
+
+The domain layer is the core layer in domain-driven design and the highest level layer that does not depend on any layer.
+
 ## Getting started
 
 server
