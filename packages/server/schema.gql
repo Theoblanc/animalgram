@@ -5,3 +5,17 @@
 type Query {
   author: String!
 }
+
+type Mutation {
+  signIn(input: SignInInputDTO!): String
+}
+
+input SignInInputDTO {
+  """user email"""
+  email: String!
+  password: String!
+}
+
+type Subscription {
+  checkHealth: String!
+}

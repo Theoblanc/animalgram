@@ -19,7 +19,12 @@ export class CreaetAccountCommandHandler implements ICommandHandler<CreateAccoun
     const { email, password } = command;
 
     // MergeObjectContext
-    const account = this.accountFactory.create(this.accountRepository.newId(), email);
+    const account = this.accountFactory.create({
+      id: this.accountRepository.newId(),
+      email,
+      emailVerified: true,
+      balance: 0
+    });
 
     // AccountImplement
     account.create(password);
