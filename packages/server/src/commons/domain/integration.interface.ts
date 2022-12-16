@@ -1,8 +1,9 @@
 export class IntegrationEvent {
-  readonly subject: string;
-  readonly data: Record<string, string>;
+  readonly trigger: string;
+  readonly payload: Record<string, string>;
 }
 
 export interface IntegrationEventPublisher {
-  publish: (event: IntegrationEvent) => Promise<void>;
+  publish: (trigger: string, payload: Record<string, string>) => Promise<void>;
+  asyncIterator<T>(triggers: string | string[]): AsyncIterator<T>;
 }

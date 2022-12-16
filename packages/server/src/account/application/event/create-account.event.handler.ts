@@ -5,22 +5,20 @@ import { IntegrationEventPublisher } from 'src/commons/domain/integration.interf
 import { TestEvent } from '../../domain/event/test.event.hander';
 
 @EventsHandler(CreateAccountEvent, TestEvent)
-export class CreateAccountEventHandler
-  implements IEventHandler<CreateAccountEvent | TestEvent>
-{
+export class CreateAccountEventHandler implements IEventHandler<CreateAccountEvent | TestEvent> {
   constructor(
     @Inject('INTEGRATION_EVENT_PUBLISHER')
-    readonly publisher: IntegrationEventPublisher,
+    readonly publisher: IntegrationEventPublisher
   ) {}
   async handle(event: CreateAccountEvent | TestEvent) {
     console.log('CreateAccountEvent...');
 
-    await this.publisher.publish({
-      subject: 'account.create',
-      data: {
-        id: event.id,
-      },
-    });
+    // await this.publisher.publish({
+    //   subject: 'account.create',
+    //   data: {
+    //     id: event.id,
+    //   },
+    // });
 
     // await this.eventStore.save({
     //   subject: 'account.create',

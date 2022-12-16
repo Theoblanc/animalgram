@@ -7,6 +7,17 @@ export async function redisFactory(config: ConfigService): Promise<RedisModuleOp
       {
         host: config.get('REDIS_MASTER_HOST'),
         port: config.get('REDIS_MASTER_PORT')
+      },
+      ,
+      {
+        namespace: 'PUBLISHER_REDIS_NAMESPACE',
+        host: config.get('REDIS_MASTER_HOST'),
+        port: config.get('REDIS_MASTER_PORT')
+      },
+      {
+        namespace: 'SUBSCRIBER_REDIS_NAMESPACE',
+        host: config.get('REDIS_MASTER_HOST'),
+        port: config.get('REDIS_MASTER_PORT')
       }
     ]
   };

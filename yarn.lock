@@ -1958,6 +1958,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/amqplib@npm:^0.5.1":
+  version: 0.5.17
+  resolution: "@types/amqplib@npm:0.5.17"
+  dependencies:
+    "@types/bluebird": "*"
+    "@types/node": "*"
+  checksum: 099c6167b1ec37d14abdab609d38910617cc87da27602c023c1574269324d2d75153b9e3a229d807edef702322c85d665b6151e2c26fd89c1b5edaf425f1b557
+  languageName: node
+  linkType: hard
+
 "@types/amqplib@npm:^0.8.2":
   version: 0.8.2
   resolution: "@types/amqplib@npm:0.8.2"
@@ -2030,6 +2040,24 @@ __metadata:
     "@types/connect": "*"
     "@types/node": "*"
   checksum: e17840c7d747a549f00aebe72c89313d09fbc4b632b949b2470c5cb3b1cb73863901ae84d9335b567a79ec5efcfb8a28ff8e3f36bc8748a9686756b6d5681f40
+  languageName: node
+  linkType: hard
+
+"@types/bunyan@npm:0.0.35":
+  version: 0.0.35
+  resolution: "@types/bunyan@npm:0.0.35"
+  dependencies:
+    "@types/node": "*"
+  checksum: 491787a57501875bb99aafeb35f9ec70f38425105a6d3d8e409d6b930e4e36f0ea2efd4ee4ad8cd1b56cbd37444c3b315b03e2067bb7034797ba61b4a0672806
+  languageName: node
+  linkType: hard
+
+"@types/bunyan@npm:^1.8.0":
+  version: 1.8.8
+  resolution: "@types/bunyan@npm:1.8.8"
+  dependencies:
+    "@types/node": "*"
+  checksum: b28966c13579b281ae75560d8c99ee4149348818cd4c4d6424afeee9fdab1039db2a0c06f1ab62fbf8c71f99dcebb70551bb45f2110d6a1fc3e3f891355b6b4b
   languageName: node
   linkType: hard
 
@@ -2126,6 +2154,13 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: d076bb61f45d0fc42dee496ef8b1c2f8742e15d5e47e90e20d0243386e426c04d4efd408a48875ab432f7960b4ce3414db20ed0fbbfc7bcc89d84e574f6e045a
+  languageName: node
+  linkType: hard
+
+"@types/graphql@npm:^0.9.1":
+  version: 0.9.4
+  resolution: "@types/graphql@npm:0.9.4"
+  checksum: 2485c606618b7fdc51ba5cf72ccdfccfea07ac6ab8793e37081c31bacbafa427358d7912785b6aad801e8f1707a13db0870ff4ae73f27c76e35da2e3ec0510a4
   languageName: node
   linkType: hard
 
@@ -2860,6 +2895,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"amqplib@npm:^0.5.1":
+  version: 0.5.6
+  resolution: "amqplib@npm:0.5.6"
+  dependencies:
+    bitsyntax: ~0.1.0
+    bluebird: ^3.5.2
+    buffer-more-ints: ~1.0.0
+    readable-stream: 1.x >=1.1.9
+    safe-buffer: ~5.1.2
+    url-parse: ~1.4.3
+  checksum: 1184db7281c069af10591d2d3b58a6bdc62dff21a739ec1e125107a2ffee7bf8baf6411a2348ea9f1ee1501311aa34df8b97fa6aba098190e60c46a1fb4ddc36
+  languageName: node
+  linkType: hard
+
 "amqplib@npm:^0.8.0":
   version: 0.8.0
   resolution: "amqplib@npm:0.8.0"
@@ -3182,6 +3231,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"async@npm:^2.5.0":
+  version: 2.6.4
+  resolution: "async@npm:2.6.4"
+  dependencies:
+    lodash: ^4.17.14
+  checksum: a52083fb32e1ebe1d63e5c5624038bb30be68ff07a6c8d7dfe35e47c93fc144bd8652cbec869e0ac07d57dde387aa5f1386be3559cdee799cb1f789678d88e19
+  languageName: node
+  linkType: hard
+
 "async@npm:^3.2.3":
   version: 3.2.4
   resolution: "async@npm:3.2.4"
@@ -3357,7 +3415,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bluebird@npm:^3.7.2":
+"bluebird@npm:^3.5.2, bluebird@npm:^3.7.2":
   version: 3.7.2
   resolution: "bluebird@npm:3.7.2"
   checksum: 869417503c722e7dc54ca46715f70e15f4d9c602a423a02c825570862d12935be59ed9c7ba34a9b31f186c017c23cac6b54e35446f8353059c101da73eac22ef
@@ -4721,6 +4779,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"es6-promise@npm:^4.0.5":
+  version: 4.2.8
+  resolution: "es6-promise@npm:4.2.8"
+  checksum: 95614a88873611cb9165a85d36afa7268af5c03a378b35ca7bda9508e1d4f1f6f19a788d4bc755b3fd37c8ebba40782018e02034564ff24c9d6fa37e959ad57d
+  languageName: node
+  linkType: hard
+
 "escalade@npm:^3.1.1":
   version: 3.1.1
   resolution: "escalade@npm:3.1.1"
@@ -5625,6 +5690,46 @@ __metadata:
   languageName: node
   linkType: hard
 
+"graphql-rabbitmq-subscriptions@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "graphql-rabbitmq-subscriptions@npm:1.1.0"
+  dependencies:
+    "@types/bunyan": ^1.8.0
+    async: ^2.5.0
+    graphql-subscriptions: ^0.4.4
+    rabbitmq-pub-sub: ^0.2.5
+  checksum: cdaa25e0f19147615325278b82b4693ddb31118245b8727bdf022a2775a53a5a17f904a7afeb9e9cb6966b96c7b4ed5fdb202f9aabb510930e18ec7815b10eeb
+  languageName: node
+  linkType: hard
+
+"graphql-redis-subscriptions@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "graphql-redis-subscriptions@npm:2.5.0"
+  dependencies:
+    ioredis: ^5.1.0
+    iterall: ^1.3.0
+  peerDependencies:
+    graphql-subscriptions: ^1.0.0 || ^2.0.0
+  dependenciesMeta:
+    ioredis:
+      optional: true
+  checksum: 276a0aafee4fb5615bfd0989774fe7b373aedab29ba4ae5f7cb8c0e8a1902e7ab1df567a8d1174dd211c4349ec6182a6ef7ca843fb61633469bd767c764546fd
+  languageName: node
+  linkType: hard
+
+"graphql-subscriptions@npm:^0.4.4":
+  version: 0.4.4
+  resolution: "graphql-subscriptions@npm:0.4.4"
+  dependencies:
+    "@types/graphql": ^0.9.1
+    es6-promise: ^4.0.5
+    iterall: ^1.1.1
+  peerDependencies:
+    graphql: ^0.7.0 || ^0.8.0 || ^0.9.0 || ^0.10.1
+  checksum: ef55940ac5c77fc0625d5b4ec9ae67c06eacd77bf487540f24e0888c12449d8bd368d98176d3a2a3a7fb6aa02c74381e27ae2c877d280758e88284b7155e5bbf
+  languageName: node
+  linkType: hard
+
 "graphql-tag@npm:2.12.6, graphql-tag@npm:^2.11.0":
   version: 2.12.6
   resolution: "graphql-tag@npm:2.12.6"
@@ -6095,7 +6200,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ioredis@npm:*, ioredis@npm:^5.2.4":
+"ioredis@npm:*, ioredis@npm:^5.1.0, ioredis@npm:^5.2.4":
   version: 5.2.4
   resolution: "ioredis@npm:5.2.4"
   dependencies:
@@ -6362,7 +6467,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"iterall@npm:1.3.0, iterall@npm:^1.2.1":
+"iterall@npm:1.3.0, iterall@npm:^1.1.1, iterall@npm:^1.2.1, iterall@npm:^1.3.0":
   version: 1.3.0
   resolution: "iterall@npm:1.3.0"
   checksum: c78b99678f8c99be488cca7f33e4acca9b72c1326e050afbaf023f086e55619ee466af0464af94a0cb3f292e60cb5bac53a8fd86bd4249ecad26e09f17bb158b
@@ -7348,7 +7453,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:4.17.21, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.21, lodash@npm:^4.7.0":
+"lodash@npm:4.17.21, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.21, lodash@npm:^4.7.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -9243,6 +9348,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rabbitmq-pub-sub@npm:^0.2.5":
+  version: 0.2.5
+  resolution: "rabbitmq-pub-sub@npm:0.2.5"
+  dependencies:
+    "@types/amqplib": ^0.5.1
+    "@types/bunyan": 0.0.35
+    amqplib: ^0.5.1
+  checksum: cb62e8f8a6a0323f12b49d5c2142b3e922452ba78a23bd9ae1efa3f89ea38b56335927d7b49623cf170c48b6dacf2723118fa327e02e1ade993a50550d5562f6
+  languageName: node
+  linkType: hard
+
 "railroad-diagrams@npm:^1.0.0":
   version: 1.0.0
   resolution: "railroad-diagrams@npm:1.0.0"
@@ -9755,6 +9871,8 @@ __metadata:
     eslint-config-prettier: ^8.3.0
     eslint-plugin-prettier: ^4.0.0
     graphql: ^16.6.0
+    graphql-rabbitmq-subscriptions: ^1.1.0
+    graphql-redis-subscriptions: ^2.5.0
     graphql-ws: ^5.11.2
     ioredis: ^5.2.4
     jest: ^27.2.5
@@ -10964,6 +11082,16 @@ __metadata:
     querystringify: ^2.1.1
     requires-port: ^1.0.0
   checksum: fbdba6b1d83336aca2216bbdc38ba658d9cfb8fc7f665eb8b17852de638ff7d1a162c198a8e4ed66001ddbf6c9888d41e4798912c62b4fd777a31657989f7bdf
+  languageName: node
+  linkType: hard
+
+"url-parse@npm:~1.4.3":
+  version: 1.4.7
+  resolution: "url-parse@npm:1.4.7"
+  dependencies:
+    querystringify: ^2.1.1
+    requires-port: ^1.0.0
+  checksum: 3ede937508436c9685a60c90634894aaf745d75160c0092c7f36335c79563effedf1a9fe0181f98e9c5165af73ba5f8fe1dc6e274c6556ae170be01f6e54c67f
   languageName: node
   linkType: hard
 

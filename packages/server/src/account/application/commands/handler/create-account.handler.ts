@@ -27,7 +27,8 @@ export class CreaetAccountCommandHandler implements ICommandHandler<CreateAccoun
     });
 
     // AccountImplement
-    account.create(password);
+    account.createPassword(password);
+
     await this.accountRepository.save(account);
 
     //test

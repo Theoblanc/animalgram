@@ -16,7 +16,8 @@ export class GqlConfigService implements GqlOptionsFactory {
       subscriptions: {
         'graphql-ws': {
           path: '/api/graphql'
-        }
+        },
+        'subscriptions-transport-ws': true
       }
     };
   }

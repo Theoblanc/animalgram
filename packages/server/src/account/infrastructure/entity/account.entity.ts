@@ -1,12 +1,11 @@
 import { BaseEntity } from 'src/commons/infrastructure/entities/base.entity';
-import { TokenEntity } from 'src/token/infrastructure/entity/token.entity';
-import { Column, Entity, OneToOne, JoinColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity({
   name: 'accounts'
 })
 export class AccountEntity extends BaseEntity {
-  @Column({ type: 'varchar' })
+  @PrimaryColumn({ type: 'varchar' })
   email: string;
 
   @Column({ type: 'varchar' })

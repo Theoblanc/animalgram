@@ -1,14 +1,8 @@
-import { Module, Provider } from '@nestjs/common';
-import { IntegrationEventPublisherImplement } from './infrastructure/message/integration-event.publisher';
+import { Module } from '@nestjs/common';
+import { InfrastructureModule } from './infrastructure/Infrastructure.module';
 
-const infrastructure: Provider[] = [
-  {
-    provide: 'INTEGRATION_EVENT_PUBLISHER',
-    useClass: IntegrationEventPublisherImplement,
-  },
-];
 @Module({
-  providers: [...infrastructure],
-  exports: [...infrastructure],
+  imports: [InfrastructureModule],
+  exports: [InfrastructureModule]
 })
 export class CommonModule {}

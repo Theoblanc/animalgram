@@ -24,7 +24,7 @@ export type AccountProperties = AccountEssentialProperties & AccountOptionalProp
 
 export interface Account {
   properties: () => AccountProperties;
-  create: (password: string) => void;
+  createPassword: (password: string) => void;
   update: (account: Partial<AccountProperties>) => void;
   comparePassword: (password: string) => boolean;
   commit: () => void;
@@ -66,7 +66,7 @@ export class AccountImplement extends AggregateRoot implements Account {
     };
   }
 
-  create(password: string): void {
+  createPassword(password: string): void {
     this.setPassword(password);
     this.apply(new CreateAccountEvent(this.properties()));
   }

@@ -31,11 +31,11 @@ npm install
 docker-compose up --build
 ```
 
-web
+<!-- web
 
 ```
 
-```
+``` -->
 
 ## TODO
 
