@@ -6,7 +6,7 @@ import { CreateAccountBodyDTO } from './dto/crate-account.body.dto';
 
 @Controller('accounts')
 export class AccountController {
-  constructor(readonly commandBus: CommandBus, readonly queryBus: QueryBus) {}
+  constructor(private readonly commandBus: CommandBus, private readonly queryBus: QueryBus) {}
 
   @Post()
   @ApiResponse({

@@ -20,7 +20,8 @@ services:
 
   postgres:
     container_name: animal_gram_db
-    image: postgres:14
+    image: postgres
+    env_file: .env
     networks:
       - animal_gram_net
     volumes:
