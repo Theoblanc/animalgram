@@ -30,7 +30,6 @@ export class CreaetAccountCommandHandler implements ICommandHandler<CreateAccoun
     account.createPassword(password);
 
     const data = await this.accountRepository.save(account);
-    console.log('data', data);
 
     //test
     this.eventBus.publish(new TestEvent('123'));

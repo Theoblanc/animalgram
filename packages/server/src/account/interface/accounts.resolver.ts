@@ -2,8 +2,8 @@ import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { Args, Context, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { CreateAccountCommand } from '../application/commands/impl/create-account.command';
 import { GetAccountQuery } from '../application/query/impl/getAccount.query';
+import { AccountResult } from '../domain/account.result';
 import { SignUpArgs } from './dto/signUp.args';
-import { AccountModel } from './model/account.dto';
 
 @Resolver('Accounts')
 export class AccountResolver {
@@ -19,7 +19,7 @@ export class AccountResolver {
     return await this.commandBus.execute(command);
   }
 
-  @Query(() => AccountModel)
+  @Query(() => AccountResult)
   async getMe() {
     const email = 'xogus1015@naver.com';
     const query = new GetAccountQuery(email);
