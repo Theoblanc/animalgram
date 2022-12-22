@@ -14,8 +14,10 @@ The server is designed based on the DDD architecture and CQRS.
 
 ## Stack
 
-<img src="https://github.com/tomchen/stack-icons/blob/master/logos/nodejs.svg" width="120" alt="Node Logo">
-<img src="https://github.com/tomchen/stack-icons/blob/master/logos/nestjs.svg" width="120" alt="Nest Logo">
+<div display="inline">
+  <img src="https://github.com/tomchen/stack-icons/blob/master/logos/nodejs.svg" width="120" alt="Node Logo">
+  <img src="https://github.com/tomchen/stack-icons/blob/master/logos/nestjs.svg" width="120" alt="Nest Logo">
+<div>
 
 ## Architecture
 
