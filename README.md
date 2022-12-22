@@ -7,11 +7,14 @@
 
 ## Description
 
-Animalgram is an app built using the framework of nest.js and next.js. The server is designed based on the DDD architecture and CQRS.
+Animalgram is an app built using the framework of nest.js and next.js.
+
+<br/><br/>
+The server is designed based on the DDD architecture and CQRS.
 
 ## Architecture
 
-This repository presents examples of applications using domain-driven design and CQRS using nest, a nodejs framework using typescript.
+This repository presents examples of applications using domain-driven design and CQRS using nest.js, a nodejs framework using typescript.
 
 The domain-driven design consists of four layers, each consisting of interface, application, domain, and infrastructure.
 
@@ -42,7 +45,7 @@ docker-compose up --build
 ### USER
 
 - [ ] Auth
-- [ ] Sign Up
+- [x] Sign Up
 - [ ] Email Login
 - [ ] Social Login
 - [ ] Withdrawal Account
