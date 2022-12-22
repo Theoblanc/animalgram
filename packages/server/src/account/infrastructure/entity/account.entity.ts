@@ -8,7 +8,7 @@ export class AccountEntity extends BaseEntity {
   @PrimaryColumn({ type: 'varchar' })
   email: string;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', nullable: true })
   password?: string;
 
   @Column({ type: 'varchar', nullable: true })

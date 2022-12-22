@@ -2,7 +2,7 @@ import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { Args, Context, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { CreateAccountCommand } from '../application/commands/impl/create-account.command';
 import { GetAccountQuery } from '../application/query/impl/getAccount.query';
-import { SignInInputDTO } from './dto/signIn.args.dto';
+import { SignUpArgs } from './dto/signUp.args';
 import { AccountModel } from './model/account.dto';
 
 @Resolver('Accounts')
@@ -14,7 +14,7 @@ export class AccountResolver {
   }
 
   @Mutation(() => String, { nullable: true })
-  async signIn(@Args('input') args: SignInInputDTO, @Context() ctx): Promise<void> {
+  async signUp(@Args('input') args: SignUpArgs, @Context() ctx): Promise<void> {
     const command = new CreateAccountCommand(args.email, args.password);
     return await this.commandBus.execute(command);
   }

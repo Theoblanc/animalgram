@@ -12,8 +12,7 @@ export type TokenOptionalProperties = Partial<{
   readonly account: AccountProperties;
 }>;
 
-export type TokenProperties = TokenEssentialProperties &
-  TokenOptionalProperties;
+export type TokenProperties = TokenEssentialProperties & TokenOptionalProperties;
 
 export interface Token {
   properties: () => TokenProperties;
@@ -35,11 +34,13 @@ export class TokenImplement extends AggregateRoot implements Token {
       id: this.id,
       token: this.token,
       type: this.type,
-      account: this.account,
+      account: this.account
     };
   }
 
   update(token: Partial<TokenProperties>): void {
     Object.assign(this, token);
   }
+
+  createFingerprint() {}
 }

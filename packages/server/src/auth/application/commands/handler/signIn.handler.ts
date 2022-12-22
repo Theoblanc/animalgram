@@ -9,9 +9,7 @@ import { AuthService } from '../../service/auth.service';
 import { SignInCommand } from '../impl/signIn.command';
 
 @CommandHandler(SignInCommand)
-export class LoginCommandHandler
-  implements ICommandHandler<SignInCommand, void>
-{
+export class SignInCommandHandler implements ICommandHandler<SignInCommand, string> {
   constructor(
     @Inject('ACCOUNT_TYPEORM')
     private readonly accountRepository: AccountRepository,
@@ -19,34 +17,29 @@ export class LoginCommandHandler
     private readonly tokenFactory: TokenFactory,
     private readonly tokenRepository: TokenRepository,
     private readonly authService: AuthService,
-    private readonly eventBus: EventBus,
+    private readonly eventBus: EventBus
   ) {}
-  async execute(command: SignInCommand): Promise<void> {
+
+  async execute(command: SignInCommand): Promise<string> {
     const { email, password } = command;
 
     const findedAccount = await this.accountRepository.findOneByEmail(email);
 
-    const account = this.accountFactory.reconstitute(
-      findedAccount.properties(),
-    );
+    const account = this.accountFactory.reconstitute(findedAccount.properties());
 
-    account.properties().id;
+    // No accout
+    if (!account) {
+      throw 'Account is not Exsist';
+    }
 
-    const accessToken = this.authService.generateToken(
-      account.properties().id,
-      account.properties().name,
-    );
+    const accessToken = this.authService.generateToken(account.properties().id, account.properties().name);
 
     const token = this.tokenFactory.create({
       id: this.tokenRepository.newId(),
       token: accessToken,
       type: TokenTypeEnum.ACCESS,
-      account: account.properties(),
+      account: account.properties()
     });
-
-    if (!account) {
-      throw 'Account is not found';
-    }
 
     const isCorrectPassword = account.comparePassword(password);
 
@@ -58,5 +51,7 @@ export class LoginCommandHandler
 
     account.commit();
     token.commit();
+
+    return account.properties().id;
   }
 }
