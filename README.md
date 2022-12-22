@@ -9,8 +9,13 @@
 
 Animalgram is an app built using the framework of nest.js and next.js.
 
-<br/><br/>
+<br/>
 The server is designed based on the DDD architecture and CQRS.
+
+## Stack
+
+<img src="https://github.com/tomchen/stack-icons/blob/master/logos/nodejs.svg" width="120" alt="Node Logo">
+<img src="https://github.com/tomchen/stack-icons/blob/master/logos/nestjs.svg" width="120" alt="Nest Logo">
 
 ## Architecture
 
@@ -27,11 +32,14 @@ The domain layer is the core layer in domain-driven design and the highest level
 server
 
 ```
-cd server
+// install yarn
+yarn
 
-npm install
+// docker build
+docker-compose build
 
-docker-compose up --build
+// docker up
+docker-compose up
 ```
 
 <!-- web
