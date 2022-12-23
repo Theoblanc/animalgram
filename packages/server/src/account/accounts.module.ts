@@ -33,6 +33,7 @@ const application = [
 @Module({
   imports: [CqrsModule, CommonModule, TypeOrmModule.forFeature([AccountEntity])],
   controllers: [AccountController],
-  providers: [...infrastructure, ...domain, ...application]
+  providers: [...infrastructure, ...domain, ...application],
+  exports: [...infrastructure, ...domain]
 })
 export class AccountsModule {}

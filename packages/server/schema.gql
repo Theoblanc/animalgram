@@ -2,8 +2,12 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Token {
+  accessToken: String!
+  refreshToeken: String!
+}
+
 type Query {
-  author: String!
   getMe: AccountResult!
 }
 
@@ -31,6 +35,7 @@ type UserNotFoundError {
 
 type Mutation {
   signUp(input: SignUpArgs!): String
+  signIn(input: SignInArgs!): String!
 }
 
 input SignUpArgs {
@@ -39,6 +44,12 @@ input SignUpArgs {
   password: String!
 }
 
+input SignInArgs {
+  email: String!
+  password: String!
+}
+
 type Subscription {
   checkHealth: String!
+  signIn: Token!
 }

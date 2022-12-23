@@ -12,8 +12,10 @@ import { RedisModule } from '@liaoliaots/nestjs-redis';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GqlConfigService } from './commons/infrastructure/settings/graphql.setting';
+import { AuthModule } from './auth/auth.module';
+import { TokenModule } from './token/token.module';
 
-const modules = [AccountsModule, HealthModule, CommonModule];
+const modules = [AccountsModule, HealthModule, TokenModule, AuthModule, CommonModule];
 
 @Module({
   imports: [
