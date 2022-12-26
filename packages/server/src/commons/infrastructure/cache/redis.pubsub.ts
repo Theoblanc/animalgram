@@ -12,8 +12,6 @@ export class PubSubRedis implements IntegrationEventPublisher {
       publisher: this.redis.getClient('PUBLISHER_REDIS_NAMESPACE'),
       subscriber: this.redis.getClient('SUBSCRIBER_REDIS_NAMESPACE')
     });
-
-    console.log(this.redisPubSub);
   }
 
   async publish(trigger: string, payload: Record<string, string>): Promise<void> {

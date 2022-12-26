@@ -10,7 +10,6 @@ import { GetAccountQuery } from './application/query/impl/getAccount.query';
 import { AccountFactory } from './domain/account.factory';
 import { AccountEntity } from './infrastructure/entity/account.entity';
 import { AccountTypeORM } from './infrastructure/repository/account.typeorm';
-import { AccountController } from './interface/accounts.controller';
 import { AccountResolver } from './interface/accounts.resolver';
 
 const infrastructure: Provider[] = [
@@ -32,7 +31,6 @@ const application = [
 
 @Module({
   imports: [CqrsModule, CommonModule, TypeOrmModule.forFeature([AccountEntity])],
-  controllers: [AccountController],
   providers: [...infrastructure, ...domain, ...application],
   exports: [...infrastructure, ...domain]
 })
