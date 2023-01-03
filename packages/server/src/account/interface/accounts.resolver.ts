@@ -1,8 +1,6 @@
 import { Inject } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
-import { Args, Context, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
-import { MESSAGE_TYPE } from 'src/commons/domain/enum/message-type.emum';
-import { IntegrationEventPublisher } from 'src/commons/domain/integration.interface';
+import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { CreateAccountCommand } from '../application/commands/impl/create-account.command';
 import { GetAccountQuery } from '../application/query/impl/getAccount.query';
 import { AccountResult } from '../domain/account.result';
@@ -11,8 +9,9 @@ import { SignUpArgs } from './dto/signUp.args';
 @Resolver('Accounts')
 export class AccountResolver {
   constructor(private readonly commandBus: CommandBus, private readonly queryBus: QueryBus) {}
+
   @Mutation(() => String, { nullable: true })
-  async signUp(@Args('input') args: SignUpArgs, @Context() ctx): Promise<void> {
+  async signUp(@Args('input') args: SignUpArgs): Promise<void> {
     const command = new CreateAccountCommand(args.email, args.password);
     return await this.commandBus.execute(command);
   }

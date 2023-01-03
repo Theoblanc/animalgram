@@ -29,7 +29,7 @@ export class CreaetAccountCommandHandler implements ICommandHandler<CreateAccoun
     // AccountImplement
     account.createPassword(password);
 
-    const data = await this.accountRepository.save(account);
+    const savedAccount = await this.accountRepository.save(account);
 
     //test
     this.eventBus.publish(new TestEvent('123'));

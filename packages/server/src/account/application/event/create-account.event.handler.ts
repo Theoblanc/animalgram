@@ -12,17 +12,5 @@ export class CreateAccountEventHandler implements IEventHandler<CreateAccountEve
   ) {}
   async handle(event: CreateAccountEvent | TestEvent) {
     console.log('CreateAccountEvent...');
-
-    // await this.publisher.publish({
-    //   subject: 'account.create',
-    //   data: {
-    //     id: event.id,
-    //   },
-    // });
-
-    // await this.eventStore.save({
-    //   subject: 'account.create',
-    //   data: event,
-    // });
   }
 }

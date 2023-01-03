@@ -8,14 +8,14 @@ describe('Account', () => {
         id: '1234',
         email: 'test@naver.com',
         balance: 0,
-        emailVerified: false,
+        emailVerified: false
       };
 
       const account = new AccountImplement(mockUser);
 
       expect(account.properties()).toEqual({
         id: '1234',
-        email: 'test@naver.com',
+        email: 'test@naver.com'
       });
     });
   });
@@ -26,10 +26,10 @@ describe('Account', () => {
         id: 'id',
         email: 'test@naver.com',
         balance: 0,
-        emailVerified: false,
+        emailVerified: false
       });
 
-      account.create('password');
+      account.createPassword('password');
 
       const result = account.getUncommittedEvents();
 
