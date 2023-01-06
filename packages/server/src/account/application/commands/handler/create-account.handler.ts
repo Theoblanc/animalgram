@@ -11,8 +11,7 @@ export class CreaetAccountCommandHandler implements ICommandHandler<CreateAccoun
   constructor(
     @Inject('ACCOUNT_TYPEORM')
     private readonly accountRepository: AccountRepository,
-    private readonly accountFactory: AccountFactory,
-    private readonly eventBus: EventBus
+    private readonly accountFactory: AccountFactory
   ) {}
 
   async execute(command: CreateAccountCommand): Promise<void> {
@@ -29,10 +28,7 @@ export class CreaetAccountCommandHandler implements ICommandHandler<CreateAccoun
     // AccountImplement
     account.createPassword(password);
 
-    const savedAccount = await this.accountRepository.save(account);
-
-    //test
-    this.eventBus.publish(new TestEvent('123'));
+    await this.accountRepository.save(account);
 
     account.commit();
   }

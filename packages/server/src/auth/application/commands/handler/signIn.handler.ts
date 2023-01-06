@@ -48,8 +48,7 @@ export class SignInCommandHandler implements ICommandHandler<SignInCommand, stri
     const token = this.tokenFactory.create({
       id: this.tokenRepository.newId(),
       token: refreshToken,
-      type: TokenTypeEnum.REFRESH,
-      account: account.properties()
+      type: TokenTypeEnum.REFRESH
     });
 
     account.update({ token: token.properties().id });

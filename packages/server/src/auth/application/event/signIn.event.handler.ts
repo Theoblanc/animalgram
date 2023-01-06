@@ -1,7 +1,7 @@
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 
 import { SignInEvent } from 'src/auth/domain/events/signIn.event';
-import { IntegrationEventPublisher } from 'src/commons/domain/integration.interface';
+import { IntegrationEventPublisher } from 'src/commons/domain/message/integration.interface';
 import { Inject } from '@nestjs/common';
 
 @EventsHandler(SignInEvent)

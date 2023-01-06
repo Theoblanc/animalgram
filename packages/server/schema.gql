@@ -35,16 +35,10 @@ type UserNotFoundError {
 
 type Mutation {
   signUp(input: SignUpArgs!): String
-  signIn(input: SignInArgs!): String!
 }
 
 input SignUpArgs {
   """user email"""
-  email: String!
-  password: String!
-}
-
-input SignInArgs {
   email: String!
   password: String!
 }

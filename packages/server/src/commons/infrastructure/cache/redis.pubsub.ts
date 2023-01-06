@@ -1,7 +1,7 @@
 import { RedisService } from '@liaoliaots/nestjs-redis';
 import { Injectable } from '@nestjs/common';
 import { RedisPubSub } from 'graphql-redis-subscriptions';
-import { IntegrationEventPublisher } from 'src/commons/domain/integration.interface';
+import { IntegrationEventPublisher } from 'src/commons/domain/message/integration.interface';
 
 @Injectable()
 export class PubSubRedis implements IntegrationEventPublisher {
