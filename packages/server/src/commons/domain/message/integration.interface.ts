@@ -4,6 +4,6 @@ export class IntegrationEvent {
 }
 
 export interface IntegrationEventPublisher {
-  publish: (trigger: string, payload: Record<string, string>) => Promise<void>;
+  publish: (trigger: string, payload: any) => Promise<void>;
   asyncIterator<T>(triggers: string | string[]): AsyncIterator<T>;
 }
