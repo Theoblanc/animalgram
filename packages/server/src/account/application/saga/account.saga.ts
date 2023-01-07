@@ -1,4 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 
 @Injectable()
-export class AccountSagas {}
+export class AccountSagas {
+  private readonly logger: Logger;
+
+  constructor() {
+    this.logger = new Logger(this.constructor.name);
+  }
+}

@@ -14,7 +14,7 @@ export class PubSubRedis implements IntegrationEventPublisher {
     });
   }
 
-  async publish(trigger: string, payload: Record<string, string>): Promise<void> {
+  async publish(trigger: string, payload: any): Promise<void> {
     return this.redisPubSub.publish(trigger, payload);
   }
 

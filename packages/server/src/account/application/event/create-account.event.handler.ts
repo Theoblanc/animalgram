@@ -6,19 +6,19 @@ import { IntegrationEventPublisher } from 'src/commons/domain/message/integratio
 import { PubSubTriggers } from 'src/commons/domain/message/PubSubTriggers.enum';
 import { TestEvent } from '../../domain/event/test.event.hander';
 
-@EventsHandler(CreateAccountEvent, TestEvent)
-export class CreateAccountEventHandler implements IEventHandler<CreateAccountEvent | TestEvent> {
+@EventsHandler(CreateAccountEvent)
+export class CreateAccountEventHandler implements IEventHandler<CreateAccountEvent> {
   private readonly logger: Logger;
 
-  constructor(@Inject(MessageToken.INTEGRATION_EVENT_PUBLISHER) private readonly pubSub: IntegrationEventPublisher) {
+  constructor(@Inject(MessageToken.INTEGRATION_EVENT_REDIS) private readonly pubSub: IntegrationEventPublisher) {
     this.logger = new Logger(this.constructor.name);
   }
 
   async handle(event: CreateAccountEvent) {
-    console.log('CreateAccountEvent...');
+    this.logger.log('CreateAccountEvent...');
 
-    this.pubSub.publish(PubSubTriggers.ACCOUNT_SIGNED_UP, {
-      [PubSubTriggers.ACCOUNT_SIGNED_UP]: event.account
+    await this.pubSub.publish('ACCOUNT_SIGNED_UP', {
+      [PubSubTriggers.ACCOUNT_SIGNED_UP]: 'HI'
     });
   }
 }

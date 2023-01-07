@@ -47,6 +47,36 @@
       "name": "animalgram",
       "database": "animalgram",
       "username": "postgres"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "database": "animalgram",
+      "username": "postgres",
+      "name": "animalgram"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "name": "animalgram",
+      "username": "postgres",
+      "database": "animalgram"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "name": "postgres",
+      "database": "animalgram",
+      "username": "postgres"
     }
   ]
 }
